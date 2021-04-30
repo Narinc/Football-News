@@ -1,0 +1,111 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id "androidx.navigation.safeargs.kotlin"
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdkVersion Versions.compileSdk
+    buildToolsVersion Versions.buildTools
+
+    defaultConfig {
+        applicationId "com.example.base_project"
+        minSdkVersion Versions.minSdk
+        targetSdkVersion Versions.targetSdk
+        versionCode Versions.code
+        versionName Versions.name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    flavorDimensions "server"
+
+    productFlavors {
+        sandbox {
+            dimension "server"
+            buildConfigField 'String', 'BASE_URL', BASE_URL_TEST
+        }
+        prod {
+            dimension "server"
+            buildConfigField 'String', 'BASE_URL', BASE_URL_PROD
+        }
+    }
+
+    applicationVariants.all { variant ->
+        def mergedFlavor = variant.getMergedFlavor()
+        if (variant.name.contains("prod")) {
+            mergedFlavor.manifestPlaceholders.put("allowClearText", false)
+        } else {
+            mergedFlavor.manifestPlaceholders.put("allowClearText", true)
+        }
+    }
+}
+
+dependencies {
+    implementation Dependencies.kotlinStandardLibrary
+    implementation Dependencies.ktxCore
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+
+    // Hilt DI
+    implementation Dependencies.daggerHilt
+    kapt Dependencies.daggerHiltCompiler
+    implementation Dependencies.hiltNavigation
+
+    // App Network
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitMoshiConverter
+    implementation Dependencies.okHttp3LoggingInterceptor
+
+    implementation Dependencies.moshi
+    implementation Dependencies.moshiKotlin
+
+    implementation Dependencies.coroutines
+    implementation Dependencies.retrofitCoroutineAdapter
+
+    implementation Dependencies.navigationFragment
+    implementation Dependencies.navigationUi
+    implementation Dependencies.room
+    kapt Dependencies.roomCompiler
+    implementation Dependencies.roomKtx
+    implementation Dependencies.lifecycleViewModelKtx
+    implementation Dependencies.lifecycleLiveDataKtx
+    implementation Dependencies.paging
+
+    implementation Dependencies.glide
+    implementation Dependencies.timber
+
+    testImplementation TestDependencies.junit
+    androidTestImplementation TestDependencies.extJunit
+    androidTestImplementation TestDependencies.espresso
+}
