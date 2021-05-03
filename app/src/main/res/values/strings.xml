@@ -3,4 +3,8 @@
     <string name="generic_error">Bir şeyler ters gitti…</string>
     <string name="retry">Tekrar Dene</string>
     <string name="loading">Yükleniyor</string>
+    <string name="action_filter">Filtrele</string>
+    <string name="date_picker_title">TARİH ARALIĞI BELİRLEYİN</string>
+    <string name="action_search">Ara</string>
+    <string name="attention">Uyarı</string>
 </resources>

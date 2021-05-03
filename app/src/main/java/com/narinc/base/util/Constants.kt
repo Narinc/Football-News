@@ -13,8 +13,8 @@ fun TextView.loadOrGone(dataText: String) {
     else this.isGone = true
 }
 
-fun ImageView.loadImageOrDefault(imgUrl: String) {
-    if (imgUrl.isNotEmpty())
+fun ImageView.loadImageOrDefault(imgUrl: String?) {
+    if (imgUrl.isNullOrEmpty().not())
         Glide.with(context)
             .load(imgUrl)
             .apply(
