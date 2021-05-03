@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         initAdapter()
         getNewsAndNotifyAdapter()
         showFilterPopupMenu()
@@ -95,7 +96,7 @@ class HomeFragment : Fragment() {
 
     private fun getNewsAndNotifyAdapter() {
         job?.cancel()
-        job = lifecycleScope.launch {
+        lifecycleScope.launch {
             vm.loadNews().collectLatest { adapter.submitData(it) }
         }
     }

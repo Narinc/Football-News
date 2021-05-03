@@ -29,7 +29,7 @@ class AppRepository @Inject constructor(
                 database.appDao().getAllItems()
             }
         return Pager(
-            config = PagingConfig(NETWORK_PAGE_SIZE, enablePlaceholders = true),
+            config = PagingConfig(NETWORK_PAGE_SIZE, maxSize = 300, enablePlaceholders = true),
             remoteMediator = ItemRemoteMediator(from, to, api, database),
             pagingSourceFactory = pagingSourceFactory
         ).flow

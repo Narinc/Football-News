@@ -18,6 +18,7 @@ class Item (
     val description: String,
     @Json(name = "urlToImage")
     val imgUrl: String?,
+    @Json(name = "publishedAt")
     val date: String?,
     val content: String,
     val source: Source,

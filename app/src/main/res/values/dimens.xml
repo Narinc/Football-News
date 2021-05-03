@@ -22,5 +22,6 @@
     <dimen name="size_small">32dp</dimen>
 
     <dimen name="topappbar_tall_toolbar_height">120dp</dimen>
+    <dimen name="app_bar_height">256dp</dimen>
 
 </resources>

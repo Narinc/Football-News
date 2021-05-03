@@ -3,6 +3,7 @@ package com.narinc.base.ui.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -59,7 +60,8 @@ class ArticleViewHolder(private val binding: ItemArticleBinding) :
     }
 
     private fun navigateToDetail(item: Item, view: View) {
-
+        val directions = HomeFragmentDirections.actionHomeFragmentToDetailFragment(item)
+        view.findNavController().navigate(directions)
     }
 
     companion object {

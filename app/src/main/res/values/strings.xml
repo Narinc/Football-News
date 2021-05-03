@@ -7,4 +7,6 @@
     <string name="date_picker_title">TARİH ARALIĞI BELİRLEYİN</string>
     <string name="action_search">Ara</string>
     <string name="attention">Uyarı</string>
+
+    <string name="source_and_date">%1$s / %2$s</string>
 </resources>
