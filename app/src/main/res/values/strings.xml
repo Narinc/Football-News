@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">base-project</string>
+    <string name="app_name">Football News</string>
     <string name="generic_error">Bir şeyler ters gitti…</string>
     <string name="retry">Tekrar Dene</string>
     <string name="loading">Yükleniyor</string>
