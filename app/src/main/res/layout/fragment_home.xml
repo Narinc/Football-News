@@ -24,10 +24,10 @@
             android:layout_height="?attr/actionBarSize"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
-            app:title="FOOTBALL"
-            app:titleTextColor="@color/white"
             app:contentInsetStart="0dp"
-            app:menu="@menu/home_menu" />
+            app:menu="@menu/home_menu"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -50,8 +50,8 @@
         android:id="@+id/progress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
         android:indeterminateTint="?colorPrimary"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
